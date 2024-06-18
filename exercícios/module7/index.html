@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ocult {display: none}
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos
+            const aValue = document.querySelector("#campo-a");
+            const bValue = document.querySelector("#campo-b");
+            const btn = document.querySelector("#btn");
+            const valid = document.querySelector("#ok");
+            const invalid = document.querySelector("#not-ok");
+            
+            // Função
+            function reveal(element) {
+                element.classList.remove('ocult');
+            }
+            function verify(event) {
+                event.preventDefault();
+                valid.classList.add('ocult');
+                invalid.classList.add('ocult');
+                
+                if (parseFloat(bValue.value) > parseFloat(aValue.value)) {
+                    console.log("o valor b é maior");
+                    reveal(valid);
+                } else {
+                    console.log("o valor a é maior");
+                    reveal(invalid);
+                }
+            }
+            // Evento
+            btn.addEventListener("click", verify);
+        });
+    </script>
+</head>
+<body>
+    <h2>O formulário será válido apenas se o campo B for maior que o A.</h2>
+    
+    <form>
+        <input type="number" placeholder="Campo A" id="campo-a" required>
+        <input type="number" placeholder="Campo B" id="campo-b" required>
+
+        <button type="submit" id="btn">Submit</button>
+
+        <h3 id="ok" class="ocult" style="color:green;">O formulário é válido!</h3>
+        <h3 id="not-ok" class="ocult" style="color:red;">O formulário é inválido!</h3>
+    </form>
+</body>
+</html>
