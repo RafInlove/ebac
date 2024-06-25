@@ -1,0 +1,8 @@
+.container h1, form {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.btn {
+    margin: 1rem 0;
+}
